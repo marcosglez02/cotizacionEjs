@@ -35,7 +35,27 @@
                 </select>
                 <button type="submit">enviar</button>
             </form>
+            <%
+                let pagoInicial = 0;
+                let totFin = 0;
+                let pagoMen = 0;
+            if(valor!=null){
+                pagoInicial = valor * (pInicial/100);
+                totFin = valor - pagoInicial;
+                pagoMen = totFin / plazos;
+            }%>
+            <br>
+            <hr>
+            <h3>Resumen de la cotización</h3>
             
+            Valor del automóvil: <%=valor%>
+            Porcentaje de pago inicial: <%=pInicial%>
+            Plazos: <%=plazos%>
+            
+
+            Pago inicial: <%=pagoInicial%>
+            Total a financiar: <%=totFin%>
+            Pago mensual: <%=pagoMen%>
         </div>
             
     </div>
