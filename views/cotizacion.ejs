@@ -10,31 +10,48 @@
 <body>
     <div class="container">
         <div class="text-center">
-            <h1>Cotización</h1>
-            <form action="/cotizacion" method="post">
-                <label for="">Valor del automóvil</label><input type="number" name="valor" id="valor" required value="<%=valor%>">
-                <label for="">Porcentaje de pago inicial</label> 
-                <select name="pInicial" id="pInicial">
-                    <option value="10">10%</option>
-                    <option value="20">20%</option>
-                    <option value="30">30%</option>
-                    <option value="50">50%</option>
-                    <option value="70">70%</option>
+            <div class="bg-info mw-100">
+                <h1 class="p-4">Cotización</h1>
+            </div>
+                <form class="bg-light" action="/cotizacion" method="post">
+                    <div class="row mb-1">
+                        <div class="col-4"><label class="form-label fs-5" for="">Valor del automóvil</label></div>
+                        <div class="col-4"><label class="form-label fs-5" for="">Porcentaje de pago inicial</label></div>
+                        <div class="col-4"><label class="form-label fs-5" for="">Plazos</label></div>
+                    </div>
+                    <div class="row mb-3 mx-1">
+                        <div class="col-4">
+                            <input class="form-control" type="number" name="valor" id="valor" required value="<%=valor%>">
+                        </div>
+                        <div class="col-4">
+                            <select class="form-select" name="pInicial" id="pInicial">
+                                <option value="10">10%</option>
+                                <option value="20">20%</option>
+                                <option value="30">30%</option>
+                                <option value="50">50%</option>
+                                <option value="70">70%</option>
+                            </select>
+                        </div>
+                        <div class="col-4">
+                            <select class="form-select" name="plazos" id="plazos">
+                                <option value="12">12 Meses</option>
+                                <option value="24">24 Meses</option>
+                                <option value="36">36 Meses</option>
+                                <option value="48">48 Meses</option>
+                                <option value="60">60 Meses</option>
+                                <option value="72">72 Meses</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="d-grid gap-2 col-5 mx-auto">
+                            <button class="btn btn-outline-dark fs-5 mb-3" type="submit">Realizar cotización</button>
+                        </div>
+                    </div>
                     
-                </select>
-                <br>
-                <label for="">Plazos</label>
-                <select name="plazos" id="plazos">
-                    <option value="12">12 Meses</option>
-                    <option value="24">24 Meses</option>
-                    <option value="36">36 Meses</option>
-                    <option value="48">48 Meses</option>
-                    <option value="60">60 Meses</option>
-                    <option value="72">72 Meses</option>
-                    
-                </select>
-                <button type="submit">enviar</button>
-            </form>
+                </form>
+            
+            
             <%
                 let pagoInicial = 0;
                 let totFin = 0;
@@ -44,18 +61,31 @@
                 totFin = valor - pagoInicial;
                 pagoMen = totFin / plazos;
             }%>
-            <br>
-            <hr>
-            <h3>Resumen de la cotización</h3>
-            
-            Valor del automóvil: <%=valor%>
-            Porcentaje de pago inicial: <%=pInicial%>
-            Plazos: <%=plazos%>
-            
-
-            Pago inicial: <%=pagoInicial%>
-            Total a financiar: <%=totFin%>
-            Pago mensual: <%=pagoMen%>
+            <div class="bg-warning fs-5">
+                <div class="row mt-3">
+                    <h3>Resumen de la cotización</h3>
+                </div>
+                <div class="row">
+                    <div class="col">Valor del automóvil</div>
+                    <div class="col">Porcentaje de pago inicial</div>
+                    <div class="col">Plazos</div>
+                </div>
+                <div class="row mb-3">
+                    <div class="col">$<%=valor%></div>
+                    <div class="col"><%=pInicial%>%</div>
+                    <div class="col"><%=plazos%> Meses</div>
+                </div>
+                <div class="row">
+                    <div class="col">Pago inicial</div>
+                    <div class="col">Total a financiar</div>
+                    <div class="col">Pago mensual</div>
+                </div>
+                <div class="row pb-3">
+                    <div class="col">$<%=pagoInicial%></div>
+                    <div class="col">$<%=totFin%></div>
+                    <div class="col">$<%=pagoMen%></div>
+                </div>
+            </div> 
         </div>
             
     </div>
