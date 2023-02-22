@@ -25,27 +25,30 @@
                         </div>
                         <div class="col-4">
                             <select class="form-select" name="pInicial" id="pInicial">
-                                <option value="10">10%</option>
-                                <option value="20">20%</option>
-                                <option value="30">30%</option>
-                                <option value="50">50%</option>
-                                <option value="70">70%</option>
+                                <option value="10" <% if(pInicial==10){%>selected<%}%>>10%</option>
+                                <option value="20" <% if(pInicial==20){%>selected<%}%>>20%</option>
+                                <option value="30" <% if(pInicial==30){%>selected<%}%>>30%</option>
+                                <option value="50" <% if(pInicial==50){%>selected<%}%>>50%</option>
+                                <option value="70" <% if(pInicial==70){%>selected<%}%>>70%</option>
                             </select>
                         </div>
                         <div class="col-4">
                             <select class="form-select" name="plazos" id="plazos">
-                                <option value="12">12 Meses</option>
-                                <option value="24">24 Meses</option>
-                                <option value="36">36 Meses</option>
-                                <option value="48">48 Meses</option>
-                                <option value="60">60 Meses</option>
-                                <option value="72">72 Meses</option>
+                                <option value="12" <% if(plazos==12){%>selected<%}%>>12 Meses</option>
+                                <option value="24" <% if(plazos==24){%>selected<%}%>>24 Meses</option>
+                                <option value="36" <% if(plazos==36){%>selected<%}%>>36 Meses</option>
+                                <option value="48" <% if(plazos==48){%>selected<%}%>>48 Meses</option>
+                                <option value="60" <% if(plazos==60){%>selected<%}%>>60 Meses</option>
+                                <option value="72" <% if(plazos==72){%>selected<%}%>>72 Meses</option>
                             </select>
                         </div>
                     </div>
                     <div class="row">
                         <div class="d-grid gap-2 col-5 mx-auto">
-                            <button class="btn btn-outline-dark fs-5 mb-3" type="submit">Realizar cotización</button>
+                            <button class="btn btn-outline-success fs-5 mb-3" type="submit">Realizar cotización</button>
+                        </div>
+                        <div class="d-grid gap-2 col-5 mx-auto">
+                            <button class="btn btn-outline-danger fs-5 mb-3" type="reset" id="reset">Limpiar</button>
                         </div>
                     </div>
                     
@@ -60,7 +63,7 @@
                 pagoInicial = valor * (pInicial/100);
                 totFin = valor - pagoInicial;
                 pagoMen = totFin / plazos;
-            }%>
+            %>
             <div class="bg-warning fs-5">
                 <div class="row mt-3">
                     <h3>Resumen de la cotización</h3>
@@ -85,9 +88,11 @@
                     <div class="col">$<%=totFin%></div>
                     <div class="col">$<%=pagoMen%></div>
                 </div>
-            </div> 
+            </div>
+            <%}%>
         </div>
             
     </div>
+    <script src="./js/cotizacion.js"></script>
 </body>
 </html>
